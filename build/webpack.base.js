@@ -7,6 +7,7 @@ const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 })
+const tools = require('./tools.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 function resolve(dir) {
@@ -18,13 +19,8 @@ function assetsPath(_path_) {
     return path.posix.join(assetsSubDirectory, _path_)
 }
 
-module.exports = {
+const baseConfig = {
     context: path.resolve(__dirname, '../'),
-    entry: {
-        index: './src/js/page/index.js',
-        list: './src/js/page/list.js',
-        about: './src/js/page/about.js',
-    },
     output: {
         path: path.join(__dirname, '..', 'dist'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
         filename: 'js/[name].js', //每个页面对应的主js的生成配置
@@ -130,3 +126,16 @@ module.exports = {
         }),
     ]
 }
+const filesArray = tools.getStringFromCurrentDirectory(path.join(__dirname, '..', 'src/view'))
+function getEntryArray(filesArray) {
+    let entryObj = {}
+    filesArray.forEach(file => {
+        let fileName = file.split('.')[0]
+        entryObj[fileName] = `./src/js/page/${fileName}.js`
+    })
+    return entryObj
+}
+const entryObj = getEntryArray(filesArray)
+baseConfig.entry = entryObj
+
+module.exports = baseConfig
