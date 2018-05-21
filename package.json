@@ -1,0 +1,48 @@
+{
+  "name": "pc-web-site",
+  "version": "0.0.1",
+  "description": "基于webpack的多页面站点架构解决方案",
+  "main": "index.js",
+  "author": "lgn",
+  "sideEffects": true,
+  "scripts": {
+    "build": "webpack --config build/webpack.prod.config.js --mode production",
+    "dev": "webpack-dev-server --open --mode development --config build/webpack.dev.config.js",
+    "start": "npm run dev:dll && npm run dev"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "chalk": "^2.4.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-hot-loader": "^1.3.9",
+    "css-loader": "^0.28.11",
+    "extract-loader": "^2.0.1",
+    "extract-text-webpack-plugin": "next",
+    "file-loader": "^1.1.11",
+    "happypack": "next",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.1",
+    "postcss-loader": "^2.1.5",
+    "progress-bar-webpack-plugin": "^1.11.0",
+    "pug": "^2.0.3",
+    "pug-filters": "^3.1.0",
+    "pug-loader": "^2.4.0",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2",
+    "webpack-parallel-uglify-plugin": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery": "1.12"
+  }
+}
